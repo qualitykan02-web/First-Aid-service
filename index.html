@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dashboard อาการ/การปฐมพยาบาล/การรักษา จังหวัดกาญจนบุรี</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef7ff;--card:#fff;--tx:#12304a;--mu:#5b7690;--bd:#d6e6f5;--g:#10b981;--r:#ef4444;--sh:0 6px 18px rgba(14,90,160,.12);--h1:#0ea5e9;--h2:#10b981;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1a2a;--card:#12283d;--tx:#e8f3ff;--mu:#9bb6cf;--bd:#23415c;--h1:#075985;--h2:#047857;--sh:0 6px 18px rgba(0,0,0,.4)}}
+:root[data-theme="dark"]{--bg:#0b1a2a;--card:#12283d;--tx:#e8f3ff;--mu:#9bb6cf;--bd:#23415c;--h1:#075985;--h2:#047857;--sh:0 6px 18px rgba(0,0,0,.4)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Noto Sans Thai",Tahoma,sans-serif;line-height:1.5}
+.wrap{max-width:1100px;margin:0 auto;padding:14px}
+.hero{border-radius:22px;background:linear-gradient(120deg,var(--h1),var(--h2));color:#fff;padding:20px 20px 0;box-shadow:var(--sh);overflow:hidden}
+.hero h1{margin:0;font-size:clamp(19px,4vw,28px);font-weight:800}.hero p{margin:4px 0 0;font-size:14px;opacity:.93}
+.hero svg{display:block;width:100%;height:auto;margin-top:4px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.tabs button{flex:1;min-width:140px;border:0;border-radius:14px;padding:10px 12px;font:600 14px "Noto Sans Thai",sans-serif;background:var(--card);color:var(--tx);box-shadow:var(--sh);cursor:pointer;border-bottom:4px solid transparent}
+.tabs button small{display:block;font-weight:400;color:var(--mu);font-size:12px}
+.tabs button.on{background:linear-gradient(120deg,#0ea5e9,#10b981);color:#fff;border-color:#fde047}.tabs button.on small{color:#e6fff6}
+.grid{display:grid;gap:12px}.kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.kpi{background:var(--card);border-radius:18px;padding:14px;box-shadow:var(--sh);border-top:6px solid var(--c)}
+.kpi .ic{font-size:26px}.kpi b{display:block;font-size:34px;font-weight:800;color:var(--c);line-height:1.1}.kpi span{font-size:13px;color:var(--mu)}
+.card{background:var(--card);border-radius:20px;padding:16px;box-shadow:var(--sh);margin-top:12px}
+.card h2{margin:0 0 4px;font-size:18px;font-weight:800}.sub{margin:0 0 12px;font-size:13px;color:var(--mu)}
+.two{grid-template-columns:repeat(auto-fit,minmax(310px,1fr))}
+.sg{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.s{border-radius:16px;padding:10px;background:linear-gradient(135deg,var(--c),var(--c2));color:#fff;position:relative;overflow:hidden}
+.s .e{font-size:26px}.s .n{font-size:13px;font-weight:600;min-height:40px;line-height:1.3}
+.s .v{font-size:30px;font-weight:800;line-height:1}
+.st{display:flex;align-items:center;gap:6px;margin-top:6px}
+.st button{width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.3);color:#fff;font-size:20px;font-weight:800;cursor:pointer}
+.st button:active{background:rgba(255,255,255,.55)}
+.lock .st{display:none}
+.bar{display:grid;grid-template-columns:130px 1fr 34px;gap:8px;align-items:center;margin:7px 0;font-size:13.5px}
+.bar div{height:16px;background:var(--bd);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,var(--c),var(--c2));transition:width .4s}
+.bar b{text-align:right}
+.empty{padding:22px;border-radius:16px;text-align:center;background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(14,165,233,.15));font-size:14px}
+.alert{border-left:8px solid var(--r)}
+.alert .sg{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.note{font-size:12px;color:var(--mu);margin:14px 4px}
+.rst{border:0;border-radius:10px;padding:6px 12px;background:var(--bd);color:var(--tx);font:13px "Noto Sans Thai",sans-serif;cursor:pointer}
+.rec{background:linear-gradient(135deg,rgba(14,165,233,.12),rgba(16,185,129,.14))}
+.rec ol{margin:0;padding-left:20px;font-size:14px}.rec li{margin:6px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hero">
+  <h1>🩺 Dashboard อาการ · การปฐมพยาบาล · การรักษา</h1>
+  <p>หน่วยปฐมพยาบาล จังหวัดกาญจนบุรี · ข้อมูล ณ 30 ต.ค. 2569</p>
+  <svg viewBox="0 0 900 120" role="img" aria-label="ภาพประกอบทีมแพทย์และชุดปฐมพยาบาล">
+    <defs><linearGradient id="k" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ef4444"/><stop offset="1" stop-color="#b91c1c"/></linearGradient></defs>
+    <path d="M0 95 Q200 55 420 90 T900 80 V120 H0Z" fill="#fff" opacity=".2"/>
+    <rect x="0" y="108" width="900" height="12" fill="#064e3b" opacity=".35"/>
+    <g transform="translate(60,26)"><rect x="0" y="12" width="110" height="74" rx="14" fill="url(#k)"/><rect x="34" y="0" width="42" height="16" rx="8" fill="none" stroke="#7f1d1d" stroke-width="6"/><rect x="46" y="30" width="18" height="40" rx="3" fill="#fff"/><rect x="35" y="41" width="40" height="18" rx="3" fill="#fff"/></g>
+    <g transform="translate(220,20)"><circle cx="30" cy="18" r="14" fill="#f5c9a0"/><path d="M16 14q14-18 28 0z" fill="#3b2a1a"/><path d="M10 48q20-16 40 0v42H10z" fill="#fff"/><path d="M22 36q8 22 16 0" fill="none" stroke="#334155" stroke-width="3"/><circle cx="30" cy="62" r="5" fill="#0ea5e9"/><rect x="14" y="90" width="12" height="14" rx="3" fill="#1e3a8a"/><rect x="34" y="90" width="12" height="14" rx="3" fill="#1e3a8a"/></g>
+    <g transform="translate(300,24)"><circle cx="30" cy="18" r="14" fill="#e8b78a"/><path d="M16 18q2-18 28-6l2 6z" fill="#111827"/><path d="M10 48q20-16 40 0v42H10z" fill="#22c55e"/><rect x="48" y="52" width="30" height="20" rx="4" fill="#fff"/><path d="M52 62h6l3-7 4 12 3-5h6" fill="none" stroke="#ef4444" stroke-width="2.5"/><rect x="14" y="90" width="12" height="14" rx="3" fill="#334155"/><rect x="34" y="90" width="12" height="14" rx="3" fill="#334155"/></g>
+    <g transform="translate(470,34)" font-size="30"><text>💊</text><text x="60">🩹</text><text x="120">🌡️</text><text x="180">🧊</text><text x="240">🚑</text></g>
+  </svg>
+</div>
+
+<div class="tabs" id="tabs"></div>
+<div class="grid kpis" id="kpis"></div>
+
+<div class="card">
+  <h2>🤒 อาการที่พบ</h2>
+  <p class="sub" id="symsub"></p>
+  <div class="grid sg" id="sym"></div>
+</div>
+
+<div class="grid two">
+  <div class="card"><h2>📈 อันดับอาการที่พบ</h2><p class="sub">เรียงจากมากไปน้อย</p><div id="symbar"></div></div>
+  <div class="card"><h2>💊 การปฐมพยาบาล/การรักษา</h2><p class="sub">ผู้ป่วย 1 ราย อาจได้รับมากกว่า 1 การรักษา</p><div class="grid sg" id="tx" style="grid-template-columns:repeat(auto-fill,minmax(130px,1fr))"></div></div>
+</div>
+
+<div class="card alert"><h2>🚨 อาการรุนแรงที่ต้องเฝ้าระวัง</h2><p class="sub">แผลฉีกขาดลึก · บาดเจ็บรุนแรง · เสียชีวิต</p><div class="grid sg" id="sev"></div></div>
+
+<div class="card"><h2>🏥 ปัญหา/อุปสรรคที่พบ</h2><div id="obs" class="empty"></div></div>
+
+<div class="card rec"><h2>💡 ข้อเสนอแนะ</h2>
+<ol>
+<li>เตรียมยาและเวชภัณฑ์ให้สอดคล้องกับอาการที่พบบ่อยในงานวิ่ง/ปั่น: ตะคริว, ปวดเมื่อยกล้ามเนื้อ, แผลถลอก, วิงเวียน</li>
+<li>เตรียม ice pack, ชุดทำแผล และเครื่องวัด V/s ให้พร้อมทุกจุด</li>
+<li>กำหนดเกณฑ์ส่งต่อ (Refer) และช่องทางสื่อสารกับโรงพยาบาลปลายทางล่วงหน้า</li>
+<li>บันทึกข้อมูลรายจุดทันทีหลังสิ้นสุดกิจกรรม เพื่อวิเคราะห์ย้อนหลังและวางแผนปีถัดไป</li>
+</ol></div>
+
+<p class="note">โครงสร้างหมวดอาการและการปฐมพยาบาลอ้างอิงแบบบันทึกในไฟล์ “หน่วยปฐมพยาบาล” · ไฟล์ปัจจุบันยังไม่มีการบันทึกจำนวนผู้ป่วย (งานวันที่ 29 ต.ค. ไม่มีผู้รับบริการ ส่วนงานวันที่ 1 พ.ย. ยังไม่ถึงกำหนด) · กดปุ่ม + / − เพื่อบันทึกจำนวน ระบบจะคำนวณกราฟให้อัตโนมัติ ข้อมูลที่กรอกเก็บไว้ในเบราว์เซอร์เครื่องนี้เท่านั้น <button class="rst" id="rst">ล้างข้อมูลที่กรอก</button></p>
+</div>
+<script>
+var SY=[["บาดแผล/แผลถลอก","🩹","#f97316","#fdba74"],["ปวดศีรษะ","🤕","#8b5cf6","#c4b5fd"],["วิงเวียนศีรษะ","😵‍💫","#ec4899","#f9a8d4"],["ไข้","🌡️","#ef4444","#fca5a5"],["ไอ/เจ็บคอ","😷","#0ea5e9","#7dd3fc"],["ตา (เจ็บตา/ตาแดง/ปวดตา)","👁️","#14b8a6","#5eead4"],["ปวดเมื่อยกล้ามเนื้อ","💪","#6366f1","#a5b4fc"],["ตะคริว","🦵","#f59e0b","#fcd34d"],["ปวดท้อง","🤢","#84cc16","#bef264"],["เลือดกำเดาไหล","🩸","#dc2626","#f87171"],["ปวดหู","👂","#06b6d4","#67e8f9"],["อื่นๆ","➕","#64748b","#cbd5e1"]];
+var SV=[["แผลฉีกขาดลึก","🩻","#dc2626","#f87171"],["บาดเจ็บรุนแรง","🚨","#b91c1c","#ef4444"],["เสียชีวิต","🕯️","#475569","#94a3b8"]];
+var TX=[["จำหน่ายยา","💊","#0ea5e9","#38bdf8"],["ทำแผล","🩹","#f97316","#fb923c"],["วัด V/s","🩺","#8b5cf6","#a78bfa"],["นั่งพัก ประคบเย็น","🧊","#06b6d4","#22d3ee"],["ปฏิเสธการรักษา","🙅","#64748b","#94a3b8"],["ส่งต่อ","🚑","#ef4444","#f87171"]];
+var EV=[["งานที่ 1","29 ต.ค. 69 · ทุนมูลนิธิคุณพุ่ม","✅ ดำเนินงานแล้ว"],["งานที่ 2","1 พ.ย. 69 · เดิน วิ่ง ปั่นฯ ครั้งที่ 12","⏳ ยังไม่ดำเนินงาน"]];
+var ALL=SY.concat(SV),KEYS=ALL.map(function(x){return "s:"+x[0]}).concat(TX.map(function(x){return "t:"+x[0]}));
+var D=[{},{}],cur=2,K="fa-dash-v2";
+try{var j=localStorage.getItem(K);if(j){var p=JSON.parse(j);if(p&&p.length==2)D=p}}catch(e){}
+function save(){try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}}
+function g(i,k){return i==2?(D[0][k]||0)+(D[1][k]||0):(D[i][k]||0)}
+function sum(i,L,pre){return L.reduce(function(a,x){return a+g(i,pre+x[0])},0)}
+function card(x,k,pre){var v=g(cur,pre+x[0]);return '<div class="s" style="--c:'+x[2]+';--c2:'+x[3]+'"><div class="e">'+x[1]+'</div><div class="n">'+x[0]+'</div><div class="v">'+v+'</div><div class="st"><button data-k="'+pre+x[0]+'" data-d="-1" aria-label="ลด">−</button><button data-k="'+pre+x[0]+'" data-d="1" aria-label="เพิ่ม">+</button></div></div>'}
+function render(){
+ var h="";EV.forEach(function(e,i){h+='<button class="'+(cur==i?'on':'')+'" data-t="'+i+'">'+e[0]+'<small>'+e[1]+'</small><small>'+e[2]+'</small></button>'});
+ h+='<button class="'+(cur==2?'on':'')+'" data-t="2">รวมทุกงาน<small>สรุปภาพรวม</small></button>';
+ document.getElementById("tabs").innerHTML=h;
+ var tot=sum(cur,SY,"s:")+sum(cur,SV,"s:"),ref=g(cur,"t:ส่งต่อ"),sev=sum(cur,SV,"s:"),tx=sum(cur,TX,"t:");
+ var rate=tot?Math.round(ref*100/tot)+"%":"–";
+ var kp=[["#0ea5e9","🧑‍🤝‍🧑",tot,"ผู้รับบริการ/บาดเจ็บ (ราย)"],["#10b981","💊",tx,"ครั้งการปฐมพยาบาล/รักษา"],["#ef4444","🚑",ref,"ส่งต่อ (ราย)"],["#f59e0b","📊",rate,"อัตราการส่งต่อ"],["#dc2626","🚨",sev,"อาการรุนแรง/เสียชีวิต"]];
+ document.getElementById("kpis").innerHTML=kp.map(function(k){return '<div class="kpi" style="--c:'+k[0]+'"><div class="ic">'+k[1]+'</div><b>'+k[2]+'</b><span>'+k[3]+'</span></div>'}).join("");
+ var lk=cur==2?" lock":"";
+ document.getElementById("symsub").textContent=cur==2?"แสดงผลรวมจากทุกงาน (เลือกแท็บงานเพื่อบันทึกข้อมูล)":"กดปุ่ม + เพื่อบันทึกจำนวนผู้ป่วยตามอาการ";
+ var sy=document.getElementById("sym");sy.className="grid sg"+lk;sy.innerHTML=SY.map(function(x){return card(x,0,"s:")}).join("");
+ var tg=document.getElementById("tx");tg.className="grid sg"+lk;tg.innerHTML=TX.map(function(x){return card(x,0,"t:")}).join("");
+ var sv=document.getElementById("sev");sv.className="grid sg"+lk;sv.innerHTML=SV.map(function(x){return card(x,0,"s:")}).join("");
+ var t=SY.map(function(x){return [x,g(cur,"s:"+x[0])]}).sort(function(a,b){return b[1]-a[1]}),mx=Math.max(1,t[0][1]);
+ document.getElementById("symbar").innerHTML=tot==0?'<div class="empty">✅ ยังไม่มีผู้รับบริการ/ผู้บาดเจ็บที่บันทึก<br>'+(cur==0?"งานวันที่ 29 ต.ค. 2569 ไม่มีผู้รับบริการ":"กราฟจะแสดงเมื่อมีการบันทึกข้อมูล")+'</div>':t.filter(function(r){return r[1]>0}).map(function(r){return '<div class="bar" style="--c:'+r[0][2]+';--c2:'+r[0][3]+'"><span>'+r[0][1]+' '+r[0][0].split(" ")[0]+'</span><div><i style="width:'+r[1]*100/mx+'%"></i></div><b>'+r[1]+'</b></div>'}).join("");
+ document.getElementById("obs").textContent=cur==0?"งานวันที่ 29 ต.ค. 2569: ไม่พบปัญหา/อุปสรรค":cur==1?"รอบันทึกหลังสิ้นสุดงานวันที่ 1 พ.ย. 2569":"ยังไม่พบปัญหา/อุปสรรคที่บันทึกไว้";
+}
+document.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
+ if(b.dataset.t){cur=+b.dataset.t;render()}
+ else if(b.dataset.k&&cur<2){var k=b.dataset.k;D[cur][k]=Math.max(0,(D[cur][k]||0)+ +b.dataset.d);save();render()}
+ else if(b.id=="rst"){D=[{},{}];save();render()}});
+render();
+</script>
+</body>
+</html>
